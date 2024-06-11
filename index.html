@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,323 +7,365 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
         }
-        h1 {
-            color: #4CAF50;
+        header {
+            background-color: #0066cc;
+            width: 100%;
+            padding: 1rem 0;
             text-align: center;
-            padding: 20px;
+            color: white;
+        }
+        header h1 {
             margin: 0;
-            background-color: #e0f2f1;
-        }
-        h2, h3 {
-            color: #007BFF;
-        }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            font-size: 1.5rem;
         }
         .container {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
+            max-width: 900px;
+            width: 100%;
+            padding: 1rem;
         }
-        .risk-form, .pps-box {
-            width: 45%;
+        .section {
+            margin: 1rem 0;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
+            border-radius: 8px;
+            padding: 1rem;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .resultado {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #333;
-            color: #fff;
+        .section-title {
+            font-size: 1.2rem;
+            color: #0066cc;
+            margin-bottom: 0.5rem;
         }
-        .resultado span {
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
+        .form-group {
+            margin-bottom: 1rem;
         }
-        .resultado span.baixo {
-            color: #fff;
-            background-color: green;
-        }
-        .resultado span.medio {
-            color: #fff;
-            background-color: orange;
-        }
-        .resultado span.alto {
-            color: #fff;
-            background-color: orangered;
-        }
-        .resultado span.muito-alto {
-            color: #fff;
-            background-color: red;
-        }
-        button {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .pps-box {
-            background-color: #f0f0f0;
-        }
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-        }
-        footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        label {
+        .form-group label {
             display: block;
-            margin: 10px 0;
+            margin-bottom: 0.5rem;
         }
-        .subtext {
-            font-size: 0.9em;
-            color: #777;
+        .form-group select,
+        .form-group input[type="checkbox"],
+        .form-group input[type="radio"] {
+            margin-right: 0.5rem;
         }
-        .extra-space {
-            margin-bottom: 20px;
+        .note {
+            font-size: 0.9rem;
+            color: #666;
         }
+        .button {
+            background-color: #0066cc;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .button:hover {
+            background-color: #005bb5;
+        }
+        .box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .result-box {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: #f4f4f9;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .result-item {
+            margin-bottom: 0.5rem;
+        }
+        .result-item strong {
+            display: inline-block;
+            min-width: 200px;
+        }
+        .low-risk { background-color: #d4edda; color: #155724; }
+        .medium-risk { background-color: #fff3cd; color: #856404; }
+        .high-risk { background-color: #ffeeba; color: #856404; }
+        .very-high-risk { background-color: #f8d7da; color: #721c24; }
         .link-box {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #e0f2f1;
-            border-radius: 5px;
+            margin: 2rem 0;
             text-align: center;
         }
         .link-box a {
-            color: #007BFF;
-            font-weight: bold;
+            color: white;
+            background-color: #0066cc;
+            padding: 0.5rem 1rem;
             text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .link-box a:hover {
+            background-color: #005bb5;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .highlight {
+            background-color: #e7f3ff;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        @media (max-width: 600px) {
+            .button {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+
+<header>
     <h1>Escala de Vulnerabilidade em Saúde</h1>
-    <div class="container">
-        <div class="risk-form">
-            <h2>Calculadora de Risco</h2>
-            <form id="riskForm">
-                <h3>Idade:</h3>
-                <label><input type="radio" name="idade" value="0"> Abaixo de 75 anos</label>
-                <label><input type="radio" name="idade" value="1"> Entre 75 e 84 anos</label>
-                <label><input type="radio" name="idade" value="2"> Acima de 85 anos</label>
+</header>
 
-                <h3>Multimorbidade:</h3>
-                <label><input type="checkbox" name="multimorbidade" value="2"> Número de comorbidades ≥ 5</label>
-                <label><input type="checkbox" name="multimorbidade" value="5"> Descompensação clínica atual</label>
-
-                <h3>Polifarmácia:</h3>
-                <label><input type="radio" name="polifarmacia" value="0"> Uso de até 4 medicamentos por dia</label>
-                <label><input type="radio" name="polifarmacia" value="2"> Número de medicamentos ≥ 5</label>
-
-                <h3>Dependência Funcional:</h3>
-                <label><input type="radio" name="avd" value="1"> Dependência para AVDs Instrumentais</label>
-                <label><input type="radio" name="avd" value="2"> Dependência para AVDs Básicas e Instrumentais</label>
-
-                <h3>Mobilidade:</h3>
-                <label><input type="radio" name="mobilidade" value="1"> Dificuldade de marcha</label>
-                <label><input type="radio" name="mobilidade" value="2"> Risco de queda</label>
-                <label><input type="radio" name="mobilidade" value="3"> Acamado</label>
-
-                <h3>Suporte Familiar:</h3>
-                <label><input type="checkbox" name="suporte" value="1"> Disfunção familiar</label>
-                <label><input type="checkbox" name="suporte" value="1"> Sobrecarga do cuidador</label>
-
-                <h3>Fragilidade:</h3>
-                <label><input type="checkbox" name="fragilidade" value="2"> Síndrome demencial</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Depressão</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Parkinson</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Neoplasia</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Sarcopenia</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Desnutrição</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Disfagia</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Incontinência</label>
-                <label><input type="checkbox" name="fragilidade" value="2"> Paralisia cerebral</label>
-
-                <h3>Cuidados Paliativos PPS (Escala de Desempenho Paliativo):</h3>
-                <p class="subtext">O PPS pode ser calculado no box do topo da página à direita que preencherá automaticamente abaixo quando calculado, mas, se o usuário já possuir o PPS calculado basta clicar abaixo na faixa de valor adequada.</p>
-                <label><input type="radio" name="pps" value="2"> PPS 80 a 100</label>
-                <label><input type="radio" name="pps" value="5"> PPS 50 a 70</label>
-                <label><input type="radio" name="pps" value="8"> PPS 30 a 50</label>
-                <label><input type="radio" name="pps" value="10"> PPS &lt; 20</label>
-
-                <button type="button" onclick="calcularRisco()">Calcular Risco</button>
-            </form>
-
-            <div class="resultado">
-                <h3>Resultado:</h3>
-                <p>Pontuação Total: <span id="totalPontos"></span></p>
-                <p>Classificação de Risco: <span id="classificacaoRisco"></span></p>
-                <p>Frequência de Visitas Domiciliares Recomendada: <span id="frequenciaVisitas"></span></p>
-            </div>
+<div class="container">
+    <div class="section">
+        <h2 class="section-title">Calculadora de Risco</h2>
+        <div class="form-group highlight">
+            <label><strong>Idade:</strong></label>
+            <label><input type="radio" name="idade" value="0"> Abaixo de 75 anos</label>
+            <label><input type="radio" name="idade" value="1"> Entre 75 e 84 anos</label>
+            <label><input type="radio" name="idade" value="2"> Acima de 85 anos</label>
         </div>
 
-        <div class="pps-box">
-            <h2>Calculadora de PPS</h2>
-            <form id="ppsForm">
-                <label for="deambulacao">Deambulação:</label>
-                <select id="deambulacao">
-                    <option value="">Selecione</option>
-                    <option value="100">Completa (100 a 80%)</option>
-                    <option value="70">Reduzida (70 a 60%)</option>
-                    <option value="50">Maior parte do tempo sentado ou acamado (50%)</option>
-                    <option value="40">Maior parte do tempo acamado (40%)</option>
-                    <option value="30">Totalmente acamado (30 a 10%)</option>
-                    <option value="0">Morte (0%)</option>
-                </select>
+        <div class="form-group highlight">
+            <label><strong>Multimorbidade:</strong></label>
+            <label><input type="checkbox" name="multimorbidade" value="2"> Número de comorbidades ≥ 5</label>
+            <label><input type="checkbox" name="multimorbidade" value="5"> Descompensação clínica atual</label>
+        </div>
 
-                <label for="atividade">Atividade e Evidência de Doença:</label>
-                <select id="atividade">
-                    <option value="">Selecione</option>
-                    <option value="100">Sem evidência de doença (100%)</option>
-                    <option value="80">Capaz de realizar atividades normais (80%)</option>
-                    <option value="70">Incapaz de realizar atividades normais, algumas evidências de doença (70 a 50%)</option>
+        <div class="form-group highlight">
+            <label><strong>Polifarmácia:</strong></label>
+            <label><input type="radio" name="polifarmacia" value="0"> Uso de até 4 medicamentos por dia</label>
+            <label><input type="radio" name="polifarmacia" value="2"> Número de medicamentos ≥ 5</label>
+        </div>
+
+        <div class="form-group highlight">
+            <label><strong>Dependência Funcional:</strong></label>
+            <label><input type="radio" name="dependencia" value="1"> Dependência para AVDs Instrumentais</label>
+            <label><input type="radio" name="dependencia" value="2"> Dependência para AVDs Básicas e Instrumentais</label>
+        </div>
+
+        <div class="form-group highlight">
+            <label><strong>Mobilidade:</strong></label>
+            <label><input type="radio" name="mobilidade" value="1"> Dificuldade de marcha</label>
+            <label><input type="radio" name="mobilidade" value="2"> Risco de queda</label>
+            <label><input type="radio" name="mobilidade" value="3"> Acamado</label>
+        </div>
+
+        <div class="form-group highlight">
+            <label><strong>Suporte Familiar:</strong></label>
+            <label><input type="checkbox" name="suporte" value="1"> Disfunção familiar</label>
+            <label><input type="checkbox" name="suporte" value="1"> Sobrecarga do cuidador</label>
+        </div>
+
+        <div class="form-group highlight">
+            <label><strong>Fragilidade:</strong></label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Síndrome demencial</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Depressão</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Parkinson</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Neoplasia</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Sarcopenia</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Desnutrição</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Disfagia</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Incontinência</label>
+            <label><input type="checkbox" name="fragilidade" value="2"> Paralisia cerebral</label>
+        </div>
+
+        <div class="form-group highlight">
+            <label><strong>Cuidados Paliativos PPS (Escala de Desempenho Paliativo):</strong></label>
+            <div class="form-group">
+                <label><input type="radio" name="pps" value="2"> PPS 80 A 100</label>
+                <label><input type="radio" name="pps" value="5"> PPS 50 A 70</label>
+                <label><input type="radio" name="pps" value="8"> PPS 30 A 50</label>
+                <label><input type="radio" name="pps" value="10"> PPS &lt; 20</label>
+            </div>
+            <p class="note">O PPS pode ser calculado no box ao final da página "Calculadora do PPS", que preencherá automaticamente uma das faixas abaixo quando calculado. Caso o usuário já possuir o PPS calculado, basta clicar abaixo na faixa de valor adequada.</p>
+        </div>
+
+        <button class="button" onclick="calcularRisco()">Calcular Risco</button>
+
+        <div class="box result-box">
+            <div class="result"></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Calculadora PPS</h2>
+        <div class="form-group">
+            <label>Deambulação:
+                <select id="deambulacao" name="deambulacao">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="100">Totalmente ambulatorial (100%)</option>
+                    <option value="90">Reduzida (90%)</option>
+                    <option value="70">Sentado ou na cadeira (70%)</option>
+                    <option value="50">Cadeira ou cama (50%)</option>
+                    <option value="30">Totalmente acamado (30% a 10%)</option>
+                </select>
+            </label>
+
+            <label>Atividade:
+                <select id="atividade" name="atividade">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="100">Atividades e trabalho normais, sem evidência de doença (100%)</option>
+                    <option value="90">Atividades e trabalho normais, alguma evidência de doença (90%)</option>
+                    <option value="80">Atividades normais com esforço, alguma evidência de doença (80%)</option>
+                    <option value="70">Incapaz para o trabalho, doença significativa (70%)</option>
+                    <option value="60">Incapaz para hobbies ou trabalhos domésticos, doença significativa (60%)</option>
+                    <option value="50">Incapaz para qualquer trabalho, doença extensa (50%)</option>
                     <option value="40">Incapaz para a maioria das atividades, doença extensa (40%)</option>
-                    <option value="30">Incapaz para qualquer atividade, doença extensa (30 - 10%)</option>
+                    <option value="30">Incapaz para qualquer atividade, doença extensa (30 a 10%)</option>
                 </select>
+            </label>
 
-                <label for="autocuidado">Auto-cuidado:</label>
-                <select id="autocuidado">
-                    <option value="">Selecione</option>
+            <label>Auto-cuidado:
+                <select id="autocuidado" name="autocuidado">
+                    <option value="" selected disabled>Selecione</option>
                     <option value="100">Completo (100 a 70%)</option>
                     <option value="60">Assistência ocasional (60%)</option>
                     <option value="50">Assistência considerável (50%)</option>
                     <option value="40">Assistência quase completa (40%)</option>
                     <option value="30">Dependência completa (30 a 10%)</option>
                 </select>
+            </label>
 
-                <label for="ingesta">Ingesta:</label>
-                <select id="ingesta">
-                    <option value="">Selecione</option>
+            <label>Ingesta:
+                <select id="ingesta" name="ingesta">
+                    <option value="" selected disabled>Selecione</option>
                     <option value="100">Normal (100 a 90%)</option>
                     <option value="80">Normal a Reduzida (80 a 30%)</option>
                     <option value="20">Mínima a Pequenos goles (20%)</option>
                     <option value="10">Cuidados com a boca (10%)</option>
                 </select>
+            </label>
 
-                <label for="consciencia">Nível da consciência:</label>
-                <select id="consciencia">
-                    <option value="">Selecione</option>
+            <label>Nível da Consciência:
+                <select id="consciencia" name="consciencia">
+                    <option value="" selected disabled>Selecione</option>
                     <option value="100">Completa (100 a 70%)</option>
                     <option value="60">Completa a Períodos de confusão (60 a 50%)</option>
                     <option value="40">Completa a Sonolência (com ou sem períodos de confusão) (40 a 20%)</option>
                     <option value="10">Sonolência a Coma (com ou sem períodos de confusão) (10%)</option>
                 </select>
+            </label>
 
-                <button type="button" class="extra-space" onclick="calcularPPS()">Calcular PPS</button>
-            </form>
-
-            <div class="resultado">
-                <h3>PPS Calculado:</h3>
-                <p id="ppsCalculado"></p>
-            </div>
-            <div class="link-box">
-                <p><a href="https://carloscoimbra.github.io/Nivel-de-Atencao-Domiciliar/" target="_blank">Para estimar Nível de Atenção Domiciliar clique aqui</a></p>
-            </div>
+            <button class="button" onclick="calcularPPS()">Calcular PPS</button>
+        </div>
+        <div class="box pps-result-box">
+            <div id="pps-result"></div>
+        </div>
+        <div class="link-box">
+            <a href="https://carloscoimbra.github.io/Nivel-de-Atencao-Domiciliar/" target="_blank">Para estimar Nível de Atenção Domiciliar clique aqui</a>
         </div>
     </div>
+</div>
 
-    <footer>
-        <p>PINHEIRO, Juliana Viana et al. Ferramenta para avaliação e gestão da visita domiciliar na atenção primária à saúde: um relato de experiência. Revista Brasileira de Medicina de Família e Comunidade, v. 14, n. 41, p. 1818-1818, 2019. <a href="https://docs.bvsalud.org/biblioref/2019/06/996066/1818-10933-1-pb.pdf">disponível aqui</a>. Translation by Maria Goretti Sales Maciel and Ricardo Tavares de Carvalho, São Paulo, Brasil. Palliative Performance Scale (PPSv2). <a href="https://victoriahospice.org/wp-content/uploads/2019/07/pps_-_portuguese_brazilian_-_sample.pdf">disponível aqui</a></p>
-        <p>Página desenvolvida como parte de um projeto de qualificação do cuidado na Atenção Primária proposto por um Residente de Medicina de Família do município de Sapucaia do Sul.</p>
-    </footer>
+<footer style="font-size: 0.7rem;">
+    PINHEIRO, Juliana Viana et al. Ferramenta para avaliação e gestão da visita domiciliar na atenção primária à saúde: um relato de experiência. Revista Brasileira de Medicina de Família e Comunidade, v. 14, n. 41, p. 1818-1818, 2019. disponível <a href="https://docs.bvsalud.org/biblioref/2019/06/996066/1818-10933-1-pb.pdf" target="_blank">aqui</a>.<br>
+    Translation by Maria Goretti Sales Maciel and Ricardo Tavares de Carvalho, São Paulo, Brasil. Palliative Performance Scale (PPSv2). disponível <a href="https://victoriahospice.org/wp-content/uploads/2019/07/pps_-_portuguese_brazilian_-_sample.pdf" target="_blank">aqui</a>.<br>
+    Página desenvolvida como parte de um projeto de qualificação do cuidado na Atenção Primária proposto por um Residente de Medicina de Família do município de Sapucaia do Sul
+</footer>
 
-    <script>
-        function calcularRisco() {
-            let totalPontos = 0;
-            let classificacaoRisco = "";
-            let frequenciaVisitas = "";
+<script>
+function calcularRisco() {
+    let idade = parseInt(document.querySelector('input[name="idade"]:checked')?.value || 0);
+    let multimorbidade = Array.from(document.querySelectorAll('input[name="multimorbidade"]:checked')).reduce((acc, curr) => acc + parseInt(curr.value), 0);
+    let polifarmacia = parseInt(document.querySelector('input[name="polifarmacia"]:checked')?.value || 0);
+    let dependencia = parseInt(document.querySelector('input[name="dependencia"]:checked')?.value || 0);
+    let mobilidade = parseInt(document.querySelector('input[name="mobilidade"]:checked')?.value || 0);
+    let suporte = Array.from(document.querySelectorAll('input[name="suporte"]:checked')).reduce((acc, curr) => acc + parseInt(curr.value), 0);
+    let fragilidade = Array.from(document.querySelectorAll('input[name="fragilidade"]:checked')).reduce((acc, curr) => acc + parseInt(curr.value), 0);
+    let pps = parseInt(document.querySelector('input[name="pps"]:checked')?.value || 0);
 
-            const idade = document.querySelector('input[name="idade"]:checked');
-            const multimorbidade = document.querySelectorAll('input[name="multimorbidade"]:checked');
-            const polifarmacia = document.querySelector('input[name="polifarmacia"]:checked');
-            const avd = document.querySelector('input[name="avd"]:checked');
-            const mobilidade = document.querySelector('input[name="mobilidade"]:checked');
-            const suporte = document.querySelectorAll('input[name="suporte"]:checked');
-            const fragilidade = document.querySelectorAll('input[name="fragilidade"]:checked');
-            const pps = document.querySelector('input[name="pps"]:checked');
+    let total = idade + multimorbidade + polifarmacia + dependencia + mobilidade + suporte + fragilidade + pps;
 
-            if (idade) totalPontos += parseInt(idade.value);
-            multimorbidade.forEach(function (checkbox) {
-                totalPontos += parseInt(checkbox.value);
-            });
-            if (polifarmacia) totalPontos += parseInt(polifarmacia.value);
-            if (avd) totalPontos += parseInt(avd.value);
-            if (mobilidade) totalPontos += parseInt(mobilidade.value);
-            suporte.forEach(function (checkbox) {
-                totalPontos += parseInt(checkbox.value);
-            });
-            fragilidade.forEach(function (checkbox) {
-                totalPontos += parseInt(checkbox.value);
-            });
-            if (pps) totalPontos += parseInt(pps.value);
+    let classificacao = '';
+    let frequencia = '';
 
-            if (totalPontos <= 5) {
-                classificacaoRisco = "baixo";
-                frequenciaVisitas = "a cada 6 meses a 1 ano";
-            } else if (totalPontos <= 10) {
-                classificacaoRisco = "médio";
-                frequenciaVisitas = "a cada 4 a 6 meses";
-            } else if (totalPontos <= 15) {
-                classificacaoRisco = "alto";
-                frequenciaVisitas = "a cada 2 a 3 meses";
-            } else {
-                classificacaoRisco = "muito alto";
-                frequenciaVisitas = "a cada 1 a 2 meses";
-            }
+    if (total <= 7) {
+        classificacao = 'baixo';
+        frequencia = 'a cada 6 meses';
+    } else if (total <= 13) {
+        classificacao = 'médio';
+        frequencia = 'a cada 4 meses';
+    } else if (total <= 19) {
+        classificacao = 'alto';
+        frequencia = 'a cada 2 a 3 meses';
+    } else {
+        classificacao = 'muito alto';
+        frequencia = 'a cada 1 mês';
+    }
 
-            document.getElementById('totalPontos').textContent = totalPontos;
-            document.getElementById('classificacaoRisco').textContent = classificacaoRisco;
-            document.getElementById('classificacaoRisco').className = classificacaoRisco.replace(" ", "-");
-            document.getElementById('frequenciaVisitas').textContent = frequenciaVisitas;
-        }
+    let resultClass = '';
+    switch(classificacao) {
+        case 'baixo':
+            resultClass = 'low-risk';
+            break;
+        case 'médio':
+            resultClass = 'medium-risk';
+            break;
+        case 'alto':
+            resultClass = 'high-risk';
+            break;
+        case 'muito alto':
+            resultClass = 'very-high-risk';
+            break;
+    }
 
-        function calcularPPS() {
-            let deambulacao = parseInt(document.getElementById('deambulacao').value);
-            let atividade = parseInt(document.getElementById('atividade').value);
-            let autocuidado = parseInt(document.getElementById('autocuidado').value);
-            let ingesta = parseInt(document.getElementById('ingesta').value);
-            let consciencia = parseInt(document.getElementById('consciencia').value);
+    document.querySelector('.result').innerHTML = `
+        <div class="result-box ${resultClass}">
+            <div class="result-item"><strong>Total da Pontuação:</strong> ${total}</div>
+            <div class="result-item"><strong>Classificação de Risco:</strong> ${classificacao}</div>
+            <div class="result-item"><strong>Frequência de Visitas Domiciliares Recomendada:</strong> ${frequencia}</div>
+        </div>
+    `;
+}
 
-            let pps = Math.min(deambulacao, atividade, autocuidado, ingesta, consciencia);
+function calcularPPS() {
+    let deambulacao = parseInt(document.getElementById('deambulacao').value) || 0;
+    let atividade = parseInt(document.getElementById('atividade').value) || 0;
+    let autocuidado = parseInt(document.getElementById('autocuidado').value) || 0;
+    let ingesta = parseInt(document.getElementById('ingesta').value) || 0;
+    let consciencia = parseInt(document.getElementById('consciencia').value) || 0;
 
-            document.getElementById('ppsCalculado').textContent = `${pps}%`;
+    let pps = Math.min(deambulacao, atividade, autocuidado, ingesta, consciencia);
 
-            const ppsOptions = document.querySelectorAll('input[name="pps"]');
-            ppsOptions.forEach(option => {
-                if (pps >= 80) {
-                    if (option.value == "2") option.checked = true;
-                } else if (pps >= 50) {
-                    if (option.value == "5") option.checked = true;
-                } else if (pps >= 30) {
-                    if (option.value == "8") option.checked = true;
-                } else if (pps < 20) {
-                    if (option.value == "10") option.checked = true;
-                }
-            });
-        }
-    </script>
+    document.getElementById('pps-result').innerText = pps + '%';
+
+    let ppsRadio;
+    if (pps >= 80) {
+        ppsRadio = document.querySelector('input[name="pps"][value="2"]');
+    } else if (pps >= 50) {
+        ppsRadio = document.querySelector('input[name="pps"][value="5"]');
+    } else if (pps >= 30) {
+        ppsRadio = document.querySelector('input[name="pps"][value="8"]');
+    } else {
+        ppsRadio = document.querySelector('input[name="pps"][value="10"]');
+    }
+    if (ppsRadio) {
+        ppsRadio.checked = true;
+    }
+}
+</script>
 </body>
 </html>
